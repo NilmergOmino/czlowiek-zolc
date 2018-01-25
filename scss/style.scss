@@ -1,0 +1,48 @@
+
+$color-m1: rgb(255,230,85);    //m = main
+$color-m2: rgb(229,207,76);
+$color-m3: rgb(191,173,63);
+$color-m4: rgb(127,115,42);
+$color-m5: rgb(64,58,21);    //d = different
+
+body{
+    margin: 0;
+    background-color: $color-m5;
+}
+.header{
+    color: $color-m1;
+    text-align: center;
+}
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.btn{
+    background-color: $color-m2;
+    box-sizing: border-box;
+    border: 0;
+    padding: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: 0.2s;
+    margin: 5px;
+    &:hover{
+        opacity: 0.8;
+    }
+}
+.questions{
+    width: 400px;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+.answer_correct{
+    background-color: green;
+}
+.answer_wrong{
+    background-color: red;
+}
