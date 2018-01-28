@@ -1,7 +1,13 @@
-const questionsArr = [["odpowiedź poprawna", "odpowiedź błędna", "druga błędna odpowiedź"],
-                        ["odpowiedź 2", "odpowiedź błędna2", "druga błędna odpowiedź2"],
-                    ["odpowiedź poprawna3", "odpowiedź błędna3", "druga błędna odpowiedź3"],
-                ["odpowiedź poprawna4", "odpowiedź błędna4", "druga błędna odpowiedź4"]];
+let questionsArr = [];
+setQuestionsList();
+
+function setQuestionsList(){
+    switch(currentLvl){
+        case 1:
+            questionsArr = questionsLvl1
+            break;
+    }
+}
 
 const button_play = document.getElementById('button_play');
 const pointsContainer = document.getElementById('points_container');
@@ -67,7 +73,7 @@ function startGame(){
     function endGame(){
         timeDrop = false;
         if(questionNumber == questionsArr.length){
-            questions.innerHTML = '<p class="endgame endgame_win">Wygrałeś! Koniec gry!</p>';
+            questions.innerHTML = '<p class="endgame endgame_win">Wygrałeś!</p>';
         }
         else{
             questions.innerHTML = '<p class="endgame endgame_loose">Przegrałeś! Koniec gry!</p>';
