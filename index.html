@@ -12,13 +12,17 @@
         <h1 class="heading">Spróbuj swych sił chłystku!</h1>
     </header>
     <main class="main">
-        <div class="time-container"><span id="time"></span></div>
-        <button class="btn button_play" id="button_play">Start</button>
-        <div class="questions" id="questions">
-            <button class="btn answer">otpowiedź</button>
-            <button class="btn answer_correct">odpowiedź</button>
-            <button class="btn answer_wrong">odpowieć</button>
+        <div class="game-stats">
+            <div class="time"><span id="time">5.0</span></div>
+            <div class="points_info">
+                <div class="points_current">
+                    Punkty: <span id="points_container">0</span>
+                </div>
+                <span class="points_max" id="points_max"></span>
+            </div>
         </div>
+        <button class="btn button_play" id="button_play">Start</button>
+        <div class="questions hidden" id="questions"></div>
         <div class="angry-man">
 
         </div>

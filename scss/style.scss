@@ -28,13 +28,14 @@ body{
     cursor: pointer;
     transition: 0.2s;
     margin: 5px;
-    &:hover{
+    &:hover, &:focus{
         opacity: 0.8;
+        outline: none;
     }
 }
 .questions{
     width: 400px;
-    display: none;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -45,4 +46,36 @@ body{
 }
 .answer_wrong{
     background-color: red;
+}
+.game-stats{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: $color-m1;
+    font-size: 20px;
+    .points_info{
+        display: flex;
+        justify-content: center;
+    }
+    .time, .points_current{
+        border-bottom: 1px solid $color-m1;
+    }
+    .points_max{
+        margin-left: 10px;
+        opacity: 0.3;
+    }
+}
+.endgame{
+    font-size: 32px;
+    text-align: center;
+    &_win{
+        color: $color-m2;
+    }
+    &_loose{
+        color: red;
+    }
+}
+.hidden{
+    display: none;
 }
