@@ -39,6 +39,8 @@ body {
   .btn:hover, .btn:focus {
     opacity: 0.8;
     outline: none; }
+  .btn::-moz-focus-inner {
+    border: 0; }
 
 .answers-container {
   width: 400px;

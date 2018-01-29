@@ -3,7 +3,7 @@ $color-m1: rgb(255,230,85);    //m = main
 $color-m2: rgb(229,207,76);
 $color-m3: rgb(191,173,63);
 $color-m4: rgb(127,115,42);
-$color-m5: rgb(64,58,21);    //d = different
+$color-m5: rgb(64,58,21);
 
 body{
     margin: 0;
@@ -47,6 +47,9 @@ body{
     &:hover, &:focus{
         opacity: 0.8;
         outline: none;
+    }
+    &::-moz-focus-inner{
+        border:0;
     }
 }
 .answers-container{
