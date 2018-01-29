@@ -8,9 +8,11 @@ body {
 
 .main {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  flex-direction: column;
+  min-height: 350px; }
 
 .btn {
   background-color: #e5cf4c;
@@ -25,7 +27,7 @@ body {
     opacity: 0.8;
     outline: none; }
 
-.questions {
+.answers-container {
   width: 400px;
   display: flex;
   flex-wrap: wrap;
@@ -65,5 +67,22 @@ body {
 
 .hidden {
   display: none; }
+
+.lvl {
+  color: #e5cf4c;
+  opacity: 0.4;
+  font-size: 14px;
+  align-self: flex-end;
+  display: inline-block;
+  margin-right: 10px; }
+  .lvl_finished {
+    opacity: 1; }
+
+.button_restart {
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+  opacity: 0.4;
+  font-size: 16px; }
 
 /*# sourceMappingURL=style.css.map */

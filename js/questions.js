@@ -1,5 +1,23 @@
-const questionsLvl1 = [["odpowiedź poprawna", "odpowiedź błędna", "druga błędna odpowiedź"],
-                        ["odpowiedź 2", "odpowiedź błędna2", "druga błędna odpowiedź2"],
-                        ["odpowiedź poprawna3", "odpowiedź błędna3", "druga błędna odpowiedź3"],
-                        ["odpowiedź poprawna4", "odpowiedź błędna4", "druga błędna odpowiedź4"]];
-let currentLvl = 1;
+const Questions = {
+    lvls: 5,
+    lvl1: [["odpowiedź poprawna", "odpowiedź błędna", "druga błędna odpowiedź"],
+            ["odpowiedź 2", "odpowiedź błędna2", "druga błędna odpowiedź2"],
+            ["odpowiedź poprawna3", "odpowiedź błędna3", "druga błędna odpowiedź3"],
+            ["odpowiedź poprawna4", "odpowiedź błędna4", "druga błędna odpowiedź4"]],
+    lvl2: [["odpowiedź poprawna", "odpowiedź błędna", "druga błędna odpowiedź"],
+            ["odpowiedź 2", "odpowiedź błędna2", "druga błędna odpowiedź2"],
+            ["odpowiedź poprawna3", "odpowiedź błędna3", "druga błędna odpowiedź3"],
+            ["odpowiedź poprawna4", "odpowiedź błędna4", "druga błędna odpowiedź4"]],
+    lvl3: [["odpowiedź poprawna", "odpowiedź błędna", "druga błędna odpowiedź"],
+            ["odpowiedź 2", "odpowiedź błędna2"],
+            ["odpowiedź poprawna3", "druga błędna odpowiedź3"],
+            ["odpowiedź poprawna4", "odpowiedź błędna4", "druga błędna odpowiedź4"]],
+    lvl4: [["odpowiedź poprawna", "odpowiedź błędna", "druga błędna odpowiedź"],
+            ["odpowiedź 2", "odpowiedź błędna2", "druga błędna odpowiedź2", "aaaaaaaaaaaa"],
+            ["odpowiedź poprawna3", "odpowiedź błędna3", "druga błędna odpowiedź3"],
+            ["odpowiedź poprawna4", "odpowiedź błędna4", "druga błędna odpowiedź4"]],
+    lvl5: [["odpowiedź poprawna", "odpowiedź błędna", "druga błędna odpowiedź"],
+            ["odpowiedź 2", "odpowiedź błędna2", "druga błędna odpowiedź2"],
+            ["odpowiedź poprawna3", "odpowiedź błędna3", "druga błędna odpowiedź3"],
+            ["odpowiedź poprawna4", "odpowiedź błędna4", "druga błędna odpowiedź4"]]
+}
