@@ -13,24 +13,34 @@
     </header>
     <main class="main">
         <div class="game-stats">
-            <div class="time"><span id="time">5.0</span></div>
+            <div class="time">Czas: <span id="time">5.0</span></div>
+            <div class="lifes-info">Życia:
+                <div class="lifes-container" id="lifes-container">
+                    <span class="life life_used"></span>
+                    <span class="life"></span>
+                    <span class="life"></span>
+                </div>
+            </div>
             <div class="points_info">
                 <div class="points_current">
                     Punkty: <span id="points_container">0</span>
                 </div>
-                <!-- <span class="points_max" id="points_max"></span> -->
             </div>
         </div>
-        <button class="btn button_play" id="button_play">Start</button>
+        <div class="start-info" id="start-info">
+            <button class="btn button_play" id="button_play">Start</button>
+            <p class="start-info__paragraph">Wskaż prawidłową pisownię!</p>
+            <p class="start-info__paragraph">Na każdą odpowiedź masz 5 sekund.</p>
+            <p class="start-info__paragraph">Uważaj, masz tylko 3 życia!</p>
+        </div>
         <div class="answers-container hidden" id="answers"></div>
         <div class="lvls-container" id="lvls-container"></div>
-        <!-- <div class="restart_container"> -->
-            <button class="btn button_restart">Zacznij od początku</button>
-        <!-- </div> -->
+        <div class="restart_container">
+            <button class="btn button_restart" id="button_restart">Zacznij od początku</button>
+        </div>
     </main>
     <script src="js/questions.js"></script>
     <script src="js/alert.js"></script>
-    <!-- <script src="js/scripts.js"></script> -->
     <script src="js/game.js"></script>
 </body>
 </html>

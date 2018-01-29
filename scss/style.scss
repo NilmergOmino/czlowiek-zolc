@@ -14,12 +14,26 @@ body{
     text-align: center;
 }
 .main{
+    width: 70%;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     flex-direction: column;
     min-height: 350px;
+}
+.start-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: $color-m2;
+    &__paragraph{
+        margin: 3px;
+        padding: 0;
+    }
 }
 .btn{
     background-color: $color-m2;
@@ -44,7 +58,7 @@ body{
     margin-top: 50px;
 }
 .answer_correct{
-    background-color: green;
+    background-color: #60BF17;
 }
 .answer_wrong{
     background-color: red;
@@ -52,16 +66,17 @@ body{
 .game-stats{
     width: 100%;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $color-m1;
     color: $color-m1;
     font-size: 20px;
+    padding-bottom: 4px;
     .points_info{
         display: flex;
         justify-content: center;
     }
-    .time, .points_current{
-        border-bottom: 1px solid $color-m1;
+    .time, .points_current, .lifes-info{
+        // border-bottom: 1px solid $color-m1;
     }
     .points_max{
         margin-left: 10px;
@@ -81,6 +96,11 @@ body{
 .hidden{
     display: none;
 }
+.lvls-container{
+    position: absolute;
+    bottom: 20%
+
+}
 .lvl{
     color: $color-m2;
     opacity: 0.4;
@@ -92,10 +112,29 @@ body{
         opacity: 1;
     }
 }
-.button_restart{
+.restart_container{
     position: absolute;
     bottom: 10%;
-    right: 10%;
+    text-align: center;
+}
+.button_restart{
+    display: inline-block;
     opacity: 0.4;
     font-size: 16px;
+}
+.lifes-container{
+    display: inline-block;
+    margin-left: 10px;
+    .life{
+        display: inline-block;
+        margin: 0 2px;
+        height: 15px;
+        width: 15px;
+        border-radius: 50%;
+        background-color: $color-m2;
+        border: 1px solid $color-m2;
+        &_used{
+            background-color: transparent;
+        }
+    }
 }

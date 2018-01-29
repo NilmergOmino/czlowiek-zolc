@@ -1,33 +1,42 @@
-const button_play = document.getElementById('button_play');
+const startInfo = document.getElementById('start-info');
+const buttonPlay = document.getElementById('button_play');
 const pointsContainer = document.getElementById('points_container');
 const answers = document.getElementById('answers');
 const timeContainer = document.getElementById('time');
 const lvlsContainer = document.getElementById('lvls-container');
+const buttonRestart = document.getElementById('button_restart');
+const lifesContainer = document.getElementById('lifes-container');
 
-window.onload = function(){
+window.addEventListener("DOMContentLoaded", function(){
     Game.init();
-    button_play.addEventListener('click', function(){
-        Game.display("hide", this);
+    buttonPlay.addEventListener('click', function(){
+        Game.display("hide", startInfo);
         Game.display("show", answers);
         Game.setQuestion();
     })
-};
-
+    buttonRestart.addEventListener('click', function(){
+        Game.init();
+        timeContainer.innerHTML = "5.0";
+        Game.display("show", startInfo);
+        Game.display("hide", answers);
+    })
+});
 const Game = {
     init: function(){
+        Game.lifes = 3;
         Game.lvl = 1;
         Game.questionNumber = 0;
         Game.points = 0;
         Game.time = 50;
-        Game.timeDrop = true;
+        Game.timeDrop = false;
         pointsContainer.innerHTML = Game.points;
         Game.questionsArr = Questions["lvl"+Game.lvl];
         Game.lvlsFinished();
+        Game.lifesLeft();
     },
     nextLevel: function(){
         Game.questionNumber = 0;
         Game.points = 0;
-        Game.timeDrop = true;
         pointsContainer.innerHTML = Game.points;
         Game.questionsArr = Questions["lvl"+Game.lvl];
         Game.setQuestion();
@@ -89,18 +98,35 @@ const Game = {
             Game.lvlsFinished();
         }
         else{
-            if(Game.time == 0){
-                answers.innerHTML = '<p class="endgame endgame_loose">Skończył Ci się czas, musisz odpowiadać szybciej!</p>';
+            Game.lifes--;
+            Game.lifesLeft();
+            if(Game.lifes > 0){
+                if(Game.time == 0){
+                    answers.innerHTML = '<p class="endgame endgame_loose">Skończył Ci się czas, musisz odpowiadać szybciej!</p>';
+                }
+                else{
+                    answers.innerHTML = '<p class="endgame endgame_loose">Zła odpowiedź!</p>';
+                }
+                let buttonNextRound = document.createElement('button');
+                buttonNextRound.classList.add('btn');
+                buttonNextRound.innerHTML = 'powtórz poziom '+Game.lvl;
+                answers.appendChild(buttonNextRound);
+                buttonNextRound.addEventListener('click', Game.nextLevel);
             }
             else{
-                answers.innerHTML = '<p class="endgame endgame_loose">Zła odpowiedź!</p>';
+                answers.innerHTML = '<p class="endgame endgame_loose">Skończyły Ci się życia. Musisz zacząć od początku.</p>';
             }
-            let buttonNextRound = document.createElement('button');
-            buttonNextRound.classList.add('btn');
-            buttonNextRound.innerHTML = 'powtórz poziom '+Game.lvl;
-            answers.appendChild(buttonNextRound);
-            buttonNextRound.addEventListener('click', Game.nextLevel);
         }
+    },
+    lifesLeft: function(){
+        let fragment = document.createDocumentFragment();
+        for(let i = 1; i<=3;i++){
+            let span = document.createElement('span');
+            (Game.lifes < i)? span.classList.add('life', 'life_used') : span.classList.add('life');
+            fragment.appendChild(span);
+        }
+        lifesContainer.innerHTML = '';
+        lifesContainer.appendChild(fragment);
     },
     lvlsFinished: function(){
         let fragment = document.createDocumentFragment();
