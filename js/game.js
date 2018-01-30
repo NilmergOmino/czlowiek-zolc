@@ -16,7 +16,7 @@ window.addEventListener("DOMContentLoaded", function(){
     })
     buttonRestart.addEventListener('click', function(){
         Game.init();
-        timeContainer.innerHTML = "5.0";
+        timeContainer.textContent = "5.0";
         Game.display("show", startInfo);
         Game.display("hide", answers);
     })
@@ -29,7 +29,7 @@ const Game = {
         Game.points = 0;
         Game.time = 50;
         Game.timeDrop = false;
-        pointsContainer.innerHTML = Game.points;
+        pointsContainer.textContent = Game.points;
         Game.questionsArr = Questions["lvl"+Game.lvl];
         Game.lvlsFinished();
         Game.lifesLeft();
@@ -37,7 +37,7 @@ const Game = {
     nextLevel: function(){
         Game.questionNumber = 0;
         Game.points = 0;
-        pointsContainer.innerHTML = Game.points;
+        pointsContainer.textContent = Game.points;
         Game.questionsArr = Questions["lvl"+Game.lvl];
         Game.setQuestion();
     },
@@ -64,33 +64,29 @@ const Game = {
     },
     checkAnswer: function(e){
         Game.timeDrop = false;
-        let answer = e.target.innerHTML;
+        let answer = e.target.textContent;
         if(answer == Game.questionsArr[Game.questionNumber][0]){
             Game.questionNumber++;
             Game.points++;
             e.target.classList.add('answer_correct');
-            pointsContainer.innerHTML = Game.points;
+            pointsContainer.textContent = Game.points;
             window.setTimeout(Game.setQuestion, 1000);
         }
         else{
             e.target.classList.add('answer_wrong');
             window.setTimeout(Game.endGame, 1000);
         }
-        document.querySelectorAll('.answer').forEach(el=>{
-            el.removeEventListener('click', Game.checkAnswer);
-        })
+        document.querySelectorAll('.answer').forEach(el => el.removeEventListener('click', Game.checkAnswer));
     },
     endGame: function(){
         Game.timeDrop = false;
         if(Game.questionNumber == Game.questionsArr.length){
-            if(Game.lvl == Questions.lvls){
-                answers.innerHTML = '<p class="endgame endgame_win">Przeszedłeś wszystkie rundy. Gratulacje!</p>';
-            }
+            if(Game.lvl == Questions.lvls) alerts.winGame();
             else{
-                answers.innerHTML = '<p class="endgame endgame_win">Przeszedłeś '+Game.lvl+' poziom!</p>';
+                alerts.winRound(Game.lvl);
                 let buttonNextRound = document.createElement('button');
                 buttonNextRound.classList.add('btn');
-                buttonNextRound.innerHTML = 'Poziom '+(Game.lvl+1);
+                buttonNextRound.textContent = 'Poziom '+(Game.lvl+1);
                 answers.appendChild(buttonNextRound);
                 buttonNextRound.addEventListener('click', Game.nextLevel);
             }
@@ -101,21 +97,14 @@ const Game = {
             Game.lifes--;
             Game.lifesLeft();
             if(Game.lifes > 0){
-                if(Game.time == 0){
-                    answers.innerHTML = '<p class="endgame endgame_loose">Skończył Ci się czas, musisz odpowiadać szybciej!</p>';
-                }
-                else{
-                    answers.innerHTML = '<p class="endgame endgame_loose">Zła odpowiedź!</p>';
-                }
+                (Game.time <= 0)? alerts.outOfTime() : alerts.wrongAnswer();
                 let buttonNextRound = document.createElement('button');
                 buttonNextRound.classList.add('btn');
-                buttonNextRound.innerHTML = 'powtórz poziom '+Game.lvl;
+                buttonNextRound.textContent = 'powtórz poziom '+Game.lvl;
                 answers.appendChild(buttonNextRound);
                 buttonNextRound.addEventListener('click', Game.nextLevel);
             }
-            else{
-                answers.innerHTML = '<p class="endgame endgame_loose">Skończyły Ci się życia. Musisz zacząć od początku.</p>';
-            }
+            else alerts.outOfLifes();
         }
     },
     lifesLeft: function(){
@@ -132,7 +121,7 @@ const Game = {
         let fragment = document.createDocumentFragment();
         for(let i = 1; i<= Questions.lvls; i++){
             let span = document.createElement('span');
-            span.innerHTML = "poziom "+i;
+            span.textContent = "poziom "+i;
             (Game.lvl > i)? span.classList.add('lvl', 'lvl_finished') : span.classList.add('lvl');
             fragment.appendChild(span);
         }
@@ -142,11 +131,9 @@ const Game = {
     timeCounting: function(){
         if(Game.timeDrop && Game.time > 0){
             Game.time -= 1;
-            timeContainer.innerHTML = ((Game.time/10)%1 == 0)?(Game.time/10)+".0" : Game.time/10;
+            timeContainer.textContent = ((Game.time/10)%1 == 0)?(Game.time/10)+".0" : Game.time/10;
             setTimeout(Game.timeCounting, 100);
         }
-        else if(Game.time <= 0){
-            Game.endGame();
-        }
+        else if(Game.time <= 0) Game.endGame();
     }
 }

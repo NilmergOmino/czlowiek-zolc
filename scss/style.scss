@@ -1,17 +1,25 @@
-
 $color-m1: rgb(255,230,85);    //m = main
 $color-m2: rgb(229,207,76);
 $color-m3: rgb(191,173,63);
 $color-m4: rgb(127,115,42);
 $color-m5: rgb(64,58,21);
 
+$font-m1: 'Roboto Slab', serif;
+
 body{
     margin: 0;
     background-color: $color-m5;
+    font-family: $font-m1;
 }
 .header{
     color: $color-m1;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0 0 10px 0;
+    height: 50px;
 }
 .main{
     width: 70%;
@@ -21,7 +29,8 @@ body{
     align-items: center;
     flex-wrap: wrap;
     flex-direction: column;
-    min-height: 350px;
+    min-height: calc(75vh - 60px);
+    text-align: center;
 }
 .start-info{
     display: flex;
@@ -36,6 +45,7 @@ body{
     }
 }
 .btn{
+    font-family: $font-m1;
     background-color: $color-m2;
     box-sizing: border-box;
     border: 0;
@@ -53,12 +63,7 @@ body{
     }
 }
 .answers-container{
-    width: 400px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
+    margin: 10px 0;
 }
 .answer_correct{
     background-color: #60BF17;
@@ -67,6 +72,7 @@ body{
     background-color: red;
 }
 .game-stats{
+    margin: 20px 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -75,19 +81,16 @@ body{
     font-size: 20px;
     padding-bottom: 4px;
     .points_info{
-        display: flex;
-        justify-content: center;
+        text-align: right;
+        min-width: 100px;
     }
-    .time, .points_current, .lifes-info{
-        // border-bottom: 1px solid $color-m1;
-    }
-    .points_max{
-        margin-left: 10px;
-        opacity: 0.3;
+    .time{
+        min-width: 100px;
+        text-align: left;
     }
 }
 .endgame{
-    font-size: 32px;
+    font-size: 28px;
     text-align: center;
     &_win{
         color: $color-m2;
@@ -99,26 +102,16 @@ body{
 .hidden{
     display: none;
 }
-.lvls-container{
-    position: absolute;
-    bottom: 20%
-
-}
 .lvl{
     color: $color-m2;
     opacity: 0.4;
     font-size: 14px;
     align-self: flex-end;
     display: inline-block;
-    margin-right: 10px;
+    margin: 0 5px;
     &_finished{
         opacity: 1;
     }
-}
-.restart_container{
-    position: absolute;
-    bottom: 10%;
-    text-align: center;
 }
 .button_restart{
     display: inline-block;
@@ -127,7 +120,7 @@ body{
 }
 .lifes-container{
     display: inline-block;
-    margin-left: 10px;
+    margin-left: 5px;
     .life{
         display: inline-block;
         margin: 0 2px;
@@ -141,3 +134,4 @@ body{
         }
     }
 }
+@import 'responsive';
