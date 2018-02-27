@@ -9,9 +9,26 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   padding: 0;
-  margin: 0 0 10px 0;
-  height: 50px; }
+  margin: 5px 0 10px 0;
+  min-height: 50px;
+  letter-spacing: .05em; }
+  .header__link {
+    color: #ffe655;
+    text-decoration: none;
+    transition: 0.4s; }
+    .header__link:hover, .header__link:focus {
+      background-color: #7f732a; }
+
+.heading {
+  margin: 0;
+  padding: 0; }
+
+.sub-heading {
+  color: #bfad3f;
+  margin: 5px 0;
+  padding: 0; }
 
 .main {
   width: 70%;
@@ -172,7 +189,7 @@ body {
 
   .header {
     font-size: 12px;
-    height: 40px; }
+    min-height: 40px; }
 
   .start-info {
     font-size: 12px; }

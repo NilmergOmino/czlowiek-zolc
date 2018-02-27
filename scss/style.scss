@@ -17,10 +17,32 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     padding: 0;
-    margin: 0 0 10px 0;
-    height: 50px;
+    margin: 5px 0 10px 0;
+    min-height: 50px;
+    letter-spacing: .05em;
+    &__link{
+        color: $color-m1;
+        text-decoration: none;
+        transition: 0.4s;
+        &:hover, &:focus{
+            background-color: $color-m4;
+        }
+    }
 }
+.heading{
+    margin: 0;
+    padding: 0;
+}
+.sub-heading{
+    color: $color-m3;
+    margin: 5px 0;
+    padding: 0;
+}
+// .span_game-word{
+//     color: $color-m1;
+// }
 .main{
     width: 70%;
     margin: 0 auto;
